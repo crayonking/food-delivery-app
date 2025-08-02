@@ -1,0 +1,15 @@
+<!-- <app-profile></app-profile> -->
+ <nav class="navbar">
+  <div class="navbar-logo">🍽️ FoodDelivery</div>
+ <ul class="navbar-links">
+  <li *ngIf="!isHomeActive">
+    <a routerLink="/" routerLinkActive="active">Home</a>
+  </li>
+  <li><a routerLink="/menu" routerLinkActive="active">Menu</a></li>
+  <li><a routerLink="/orders" routerLinkActive="active">Orders</a></li>
+  <li *ngIf="!isProfileActive">
+    <a routerLink="/profile" routerLinkActive="active">Profile</a>
+  </li>
+</ul>
+</nav> 
+<router-outlet></router-outlet>

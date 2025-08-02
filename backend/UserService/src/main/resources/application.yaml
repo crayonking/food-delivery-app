@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: UserService
+
+  dataSource:
+    url: jdbc:postgresql://postgres-food:5432/userdb
+    username: userservice_user
+    password: userservice_pass
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://keycloak:8080/realms/food-delivery/protocol/openid-connect/certs
+
+server:
+  port: 9000

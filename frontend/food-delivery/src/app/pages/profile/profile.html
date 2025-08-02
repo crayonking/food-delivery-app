@@ -1,0 +1,28 @@
+<!-- app.component.html or layout.component.html -->
+<!-- <nav class="navbar">
+  <div class="navbar-logo">🍽️ FoodDelivery</div>
+  <ul class="navbar-links">
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/menu">Menu</a></li>
+    <li><a routerLink="/orders">Orders</a></li>
+    <li><a routerLink="/profile">Profile</a></li>
+  </ul>
+</nav> -->
+
+<div class="profile-container">
+  <h1>User Profile</h1>
+  <p *ngIf="!user" class="loading">Loading...</p>
+
+  <div *ngIf="user">
+    <div class="profile-avatar">
+      {{ user.name ? user.name[0] : '👤' }}
+    </div>
+    <h2>Welcome, {{ user.name }}</h2>
+    <div class="profile-details">
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Role:</strong> {{ user.role }}</p>
+      <p><strong>Phone:</strong> {{ user.phone }}</p>
+    </div>
+  </div>
+  <button class ="logout-btn" (click)="logout()">Logout</button>
+</div>
