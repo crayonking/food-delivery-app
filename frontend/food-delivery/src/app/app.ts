@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 export class App {
 
   constructor(private router: Router) {}
+
   protected title = 'food-delivery';
 
    get isHomeActive(): boolean {

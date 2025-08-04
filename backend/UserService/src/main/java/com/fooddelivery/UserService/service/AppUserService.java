@@ -18,12 +18,11 @@ public class AppUserService {
         this.appUserRepository = appUserRepository;
     }
 
-
     public AppUser getOrCreateUserFromJwt(Jwt jwt) {
         String keycloakId = jwt.getSubject();
         String email = jwt.getClaim("email");
         String name = jwt.getClaim("preferred_username");
-//        List<String> roles = jwt.getClaim("realm_access").get("roles");
+        // List<String> roles = jwt.getClaim("realm_access").get("roles");
         List<String> roles = new ArrayList<>();
         Object realmAccessObj = jwt.getClaim("realm_access");
 
@@ -44,13 +43,13 @@ public class AppUserService {
                     user.setKeycloakId(keycloakId);
                     user.setEmail(email);
                     user.setName(name);
+                    List<String> businessRoles = List.of("ADMIN", "RESTAURANT_OWNER", "CUSTOMER");
                     String selectedRole = "UNKNOWN";
-                    if (roles.contains("ADMIN")) {
-                        selectedRole = "ADMIN";
-                    } else if (roles.contains("RESTAURANT_OWNER")) {
-                        selectedRole = "RESTAURANT_OWNER";
-                    } else if (roles.contains("CUSTOMER")) {
-                        selectedRole = "CUSTOMER";
+                    for (String businessRole : businessRoles) {
+                        if (roles.contains(businessRole)) {
+                            selectedRole = businessRole;
+                            break;
+                        }
                     }
 
                     user.setRole(selectedRole);

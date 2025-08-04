@@ -22,7 +22,8 @@ async ngOnInit() {
     const isLoggedIn = await this.keycloak.isLoggedIn();
     if (!isLoggedIn) {
       console.error('User is not logged in.');
-     await this.keycloak.login();
+    //  await this.keycloak.login();
+    this.user = null;
       return;
     }
 
